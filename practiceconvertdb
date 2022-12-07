@@ -1,0 +1,10 @@
+import pandas as pd 
+import sqlite3 as sql 
+
+con = sql.connect("BookList.db")
+data = pd.read_csv("Book_list.csv")
+
+data.to_sql('Book_Table',con, if_exists='replace',index=False)
+cur = con.cursor()
+
+con.close()
